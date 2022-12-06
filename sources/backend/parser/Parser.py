@@ -69,7 +69,9 @@ def data_transform():
 
     # создание cvs файлов
     for key, df in region_result.items():
-        df.to_csv(f"data/regions/{key}.csv", sep=';', index=False)
+        #  регионы, где года идут с 2009 по 2022 включительно
+        if df.columns.size == 14:
+            df.to_csv(f"data/regions/{key}.csv", sep=';', index=False)
 
 
 # получение индекста с которого нужно делать срез массива (читать до "85 и старше")
